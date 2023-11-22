@@ -6,7 +6,7 @@
 /*   By: natrijau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 16:46:12 by natrijau          #+#    #+#             */
-/*   Updated: 2023/11/16 16:22:02 by natrijau         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:01:06 by natrijau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-int	ft_printf(const char *list, ...);
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_put_hexa(char *s);
-void	ft_putnbr_unsigned_fd(unsigned int n, int fd);
-void	ft_put_hexa_maj(int n);
-void	ft_put_hexa_min(int n);
-void	ft_pointer_hexa(unsigned long long n);
-void	ft_putnbr_fd(int n, int fd);
-size_t	ft_strlen(const char *str);
+int		ft_printf(const char *list, ...);
+int		ft_putstr(char *s);
+int		ft_putchar(char c);
+int		ft_percent(void);
+int		ft_nbr(int n);
+int		ft_pointer_hexa(unsigned long long n);
+int		ft_hexa_min(unsigned int n);
+int		ft_hexa_maj(unsigned int n);
+int		ft_put_hexa(char *s);
+int		ft_nbr_unsigned(unsigned int n);
 #endif

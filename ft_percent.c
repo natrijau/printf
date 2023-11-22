@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_percent.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: natrijau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 18:17:00 by natrijau          #+#    #+#             */
-/*   Updated: 2023/11/08 18:20:43 by natrijau         ###   ########.fr       */
+/*   Created: 2023/11/20 12:38:37 by natrijau          #+#    #+#             */
+/*   Updated: 2023/11/20 16:04:40 by natrijau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_percent(void)
 {
-	if (n == -2147483648)
-		write(fd, "-2147483648", 11);
-	if (n < 0 && n >= -2147483647)
-	{
-		write(fd, "-", 1);
-		n = n * -1;
-	}
-	if (n > 9)
-	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putnbr_fd(n % 10, fd);
-	}
-	if (n >= 0 && n <= 9)
-		ft_putchar_fd(n + 48, fd);
+	ft_putchar('%');
+	return (1);
 }

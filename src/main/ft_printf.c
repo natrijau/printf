@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../ft_printf.h"
 
-int	list_format(va_list ptr, char c)
-{
+static int	list_format(va_list ptr, char c){
 	int	i;
 
 	i = 0;
@@ -38,28 +37,22 @@ int	list_format(va_list ptr, char c)
 	return (i);
 }
 
-int	ft_printf(const char *list, ...)
-{
-	int		i;
-	va_list	ptr;
+int	ft_printf(const char *list, ...){
 	int		len;
+	va_list	ptr;
 
 	if (!list)
 		return (-1);
 	len = 0;
 	va_start(ptr, list);
-	i = 0;
-	while (list[i])
-	{
-		if (list[i] != '%')
-			len += ft_putchar(list[i]);
-		else if (list[i] == '%')
-		{
-			len += list_format(ptr, list[i + 1]);
-			i++;
-		}
-		i++;
-	}
+    for (int i = 0; list[i]; i++){
+        if (list[i] == '%' && list[i + 1]){
+            len += list_format(ptr, list[i + 1]);
+            i++;
+        }
+        else
+            len += ft_putchar(list[i]);
+    }
 	va_end(ptr);
 	return (len);
 }

@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../ft_printf.h"
 
-int	ft_percent(void)
-{
+int	ft_percent(void){
 	ft_putchar('%');
 	return (1);
 }

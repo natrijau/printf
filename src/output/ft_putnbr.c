@@ -1,43 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexa_min.c                                      :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: natrijau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 09:55:36 by natrijau          #+#    #+#             */
-/*   Updated: 2023/11/20 12:25:02 by natrijau         ###   ########.fr       */
+/*   Created: 2023/11/08 18:17:00 by natrijau          #+#    #+#             */
+/*   Updated: 2023/11/20 10:45:48 by natrijau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../ft_printf.h"
 
-void	ft_put_hexa_min(unsigned int n)
+void	ft_putn(int n)
 {
-	if (n > 15)
-		ft_put_hexa_min(n / 16);
+	if (n == -2147483648)
+		write(1, "-2147483648", 11);
+	if (n < 0 && n >= -2147483647)
+	{
+		write(1, "-", 1);
+		n = n * -1;
+	}
+	if (n > 9)
+	{
+		ft_putn(n / 10);
+		ft_putn(n % 10);
+	}
 	if (n >= 0 && n <= 9)
 		ft_putchar(n + 48);
-	else if (n >= 10 && n < 16)
-		ft_putchar(n + 87);
-	if (n > 15)
-		ft_put_hexa_min(n % 16);
 }
 
-int	ft_hexa_min(unsigned int n)
+int	ft_nbr(int n)
 {
-	unsigned int	i;
-	unsigned int	nb;
+	int	i;
+	int	nb;
 
+	if (n == -2147483648)
+	{
+		ft_putn(n);
+		return (11);
+	}
 	nb = n;
 	i = 0;
-	if (n == 0)
-		i++;
+	if (n <= 0)
+	{
+		i += 1;
+		nb *= -1;
+	}
 	while (nb > 0)
 	{
-		nb = nb / 16;
+		nb = nb / 10;
 		i++;
 	}
-	ft_put_hexa_min(n);
+	ft_putn(n);
 	return (i);
 }
